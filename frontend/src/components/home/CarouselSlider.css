@@ -1,413 +1,1162 @@
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
 .l360-hero-section {
-    max-width: 1280px;
-    margin: 20px auto 30px;
-    padding: 50px 40px;
+    width: calc(100% - 24px);
+    max-width: 1600px;
+
+    margin: 18px auto 25px;
+
+    min-height: 610px;
+
+    padding: 70px 10%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    background: linear-gradient(145deg, #ffffff 0%, #f4f7fa 100%);
-    border-radius: 24px;
-    box-shadow: 0 15px 45px -5px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(203, 213, 225, 0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    gap: 55px;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    border: 1px solid rgba(203, 213, 225, 0.7);
+
+    /*
+      IMAGE PATH
+      public/assets/images/hero-students.jpg
+    */
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.38),
+            rgba(255, 255, 255, 0.38)
+        ),
+        url('/assets/images/hero-students.jpg');
+
+    /*
+      IMPORTANT:
+      cover keeps the image responsive.
+    */
+    background-size: cover;
+
+    /*
+      Slightly lower positioning so
+      top part does not look unnecessarily cut.
+    */
+    background-position: center 52%;
+
+    background-repeat: no-repeat;
+
+    box-shadow:
+        0 15px 45px -8px rgba(0, 0, 0, 0.14);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.l360-hero-section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.12);
-    border-color: rgba(203, 213, 225, 0.8);
+
+/* =========================================================
+   VERY LIGHT OVERLAY
+   Only for text readability
+========================================================= */
+
+.l360-hero-section::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(255, 255, 255, 0.05) 55%,
+            rgba(255, 255, 255, 0.10) 100%
+        );
+
+    z-index: 0;
+
+    pointer-events: none;
 }
+
+
+/* =========================================================
+   HERO CONTENT ABOVE IMAGE
+========================================================= */
+
+.l360-hero-left-content,
+.l360-hero-right-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HERO HOVER
+========================================================= */
+
+.l360-hero-section:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 25px 55px -10px rgba(0, 0, 0, 0.17);
+}
+
+
+/* =========================================================
+   HERO LEFT CONTENT
+========================================================= */
 
 .l360-hero-left-content {
     flex: 1.3;
+
+    min-width: 0;
+
+    max-width: 850px;
 }
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
 
 .l360-hero-left-content h1 {
-    font-size: 42px;
+    margin: 0 0 18px;
+
+    font-size: 48px;
+
+    line-height: 1.15;
+
     font-weight: 800;
-    margin-bottom: 15px;
-    background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #e11d48 100%);
+
+    letter-spacing: -1.5px;
+
+    color: #0f172a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #172554 48%,
+            #be123c 100%
+        );
+
     -webkit-background-clip: text;
     background-clip: text;
+
     -webkit-text-fill-color: transparent;
-    line-height: 1.2;
-    letter-spacing: -1px;
 }
 
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
 .l360-hero-left-content p {
-    font-size: 16px;
-    color: #475569;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    font-weight: 500;
-    max-width: 90%;
+    margin: 0 0 30px;
+
+    max-width: 760px;
+
+    font-size: 18px;
+
+    line-height: 1.65;
+
+    font-weight: 600;
+
+    color: #263852;
+
+    text-shadow:
+        0 1px 2px rgba(255, 255, 255, 0.6);
 }
+
+
+/* =========================================================
+   HERO FEATURES
+========================================================= */
 
 .l360-hero-features {
     display: flex;
-    gap: 16px;
+
     flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 18px;
+
     margin-top: 20px;
 }
 
+
+/* =========================================================
+   FEATURE ITEM
+========================================================= */
+
 .l360-feature-item {
     display: flex;
+
     align-items: center;
-    gap: 10px;
-    background: #ffffff;
-    padding: 8px 18px;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    padding: 11px 20px;
+
+    background:
+        rgba(255, 255, 255, 0.90);
+
+    border:
+        1px solid rgba(226, 232, 240, 0.95);
+
     border-radius: 50px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    box-shadow:
+        0 7px 22px rgba(15, 23, 42, 0.12);
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
+
 
 .l360-feature-item:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 25px rgba(225, 29, 72, 0.15);
+    transform: translateY(-4px);
+
     border-color: #e11d48;
-    background: linear-gradient(to right, #ffffff, #fff5f7);
+
+    box-shadow:
+        0 12px 28px rgba(225, 29, 72, 0.18);
 }
+
+
+/* =========================================================
+   FEATURE ICON
+========================================================= */
 
 .l360-feature-item i {
-    width: 28px;
-    height: 28px;
-    background: rgba(225, 29, 72, 0.1);
-    border-radius: 50%;
+    width: 32px;
+
+    height: 32px;
+
+    min-width: 32px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(225, 29, 72, 0.12);
+
     color: #e11d48;
-    font-size: 13px;
+
+    font-size: 14px;
 }
 
+
+/* =========================================================
+   FEATURE TEXT
+========================================================= */
+
 .l360-feature-item span {
-    font-size: 13px;
-    color: #334155;
-    font-weight: 600;
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #17233c;
+
+    white-space: nowrap;
 }
+
+
+/* =========================================================
+   SEARCH AREA
+========================================================= */
 
 .l360-hero-right-content {
     flex: 0.9;
-    max-width: 500px;
+
     width: 100%;
+
+    max-width: 650px;
+
+    min-width: 0;
 }
 
+
+/* =========================================================
+   SEARCH CONTAINER
+========================================================= */
+
 .l360-search-container {
-    background: #ffffff;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 50px;
-    padding: 6px 6px 6px 22px;
+    width: 100%;
+
+    min-height: 66px;
+
+    box-sizing: border-box;
+
     display: flex;
+
     align-items: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+
+    padding: 6px 7px 6px 25px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1.5px solid rgba(203, 213, 225, 0.95);
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.14);
+
+    backdrop-filter: blur(6px);
+
+    -webkit-backdrop-filter: blur(6px);
+
+    transition:
+        all 0.3s ease;
 }
+
+
+/* =========================================================
+   SEARCH FOCUS
+========================================================= */
 
 .l360-search-container:focus-within {
     border-color: #e11d48;
-    box-shadow: 0 10px 35px -5px rgba(225, 29, 72, 0.2);
+
+    box-shadow:
+        0 14px 38px rgba(225, 29, 72, 0.20);
+
     transform: translateY(-2px);
 }
 
-.l360-search-container i {
-    color: #94a3b8;
-    font-size: 16px;
-    margin-right: 12px;
+
+/* =========================================================
+   SEARCH ICON
+========================================================= */
+
+.l360-search-container > i {
+    flex-shrink: 0;
+
+    margin-right: 13px;
+
+    color: #64748b;
+
+    font-size: 18px;
 }
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
 
 .l360-search-container input {
     flex: 1;
+
+    min-width: 0;
+
     border: none;
-    padding: 10px 0;
-    font-size: 14px;
-    background: transparent;
+
     outline: none;
-    color: #0f172a;
+
+    background: transparent;
+
+    padding: 12px 0;
+
+    font-size: 15px;
+
     font-weight: 500;
+
+    color: #0f172a;
 }
+
 
 .l360-search-container input::placeholder {
     color: #94a3b8;
+
     font-weight: 400;
 }
 
+
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
 .l360-search-container button {
-    background: linear-gradient(135deg, #e11d48, #be123c);
-    color: #ffffff;
+    flex-shrink: 0;
+
     border: none;
-    padding: 10px 28px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
+
+    outline: none;
+
     cursor: pointer;
-    transition: all 0.3s ease;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e11d48,
+            #be123c
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
     text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+
+    letter-spacing: 0.8px;
+
+    box-shadow:
+        0 6px 16px rgba(225, 29, 72, 0.30);
+
+    transition:
+        all 0.3s ease;
 }
+
 
 .l360-search-container button:hover {
-    background: linear-gradient(135deg, #be123c, #9f1239);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(225, 29, 72, 0.35);
+    background:
+        linear-gradient(
+            135deg,
+            #be123c,
+            #9f1239
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 22px rgba(225, 29, 72, 0.40);
 }
 
-.l360-banner {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-    height: 60vh;
-    min-height: 550px;
-}
 
-.l360-banner-carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+/* =========================================================
+   TABLET
+========================================================= */
 
-.l360-carousel-slides {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    transition: transform 0.6s ease-in-out;
-}
+@media (max-width: 1200px) {
 
-.l360-carousel-slide {
-    width: 33.333%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    perspective: 1000px; /* For 3D effect */
-}
-
-.l360-carousel-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%);
-    z-index: 0;
-}
-
-.l360-slide-content {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.l360-slide-content:hover {
-    transform: translateY(-10px) scale(1.02) rotateX(2deg);
-}
-
-.l360-slide-content h2 {
-    color: #ffffff;
-    font-size: 3.2rem;
-    line-height: 1.25;
-    margin-bottom: 24px;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    font-weight: 800;
-    letter-spacing: -1px;
-    transition: transform 0.4s ease;
-}
-
-.l360-slide-content:hover h2 {
-    transform: translateZ(40px);
-}
-
-.l360-slide-content p {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1.25rem;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    line-height: 1.7;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 500;
-    transition: transform 0.4s ease;
-}
-
-.l360-slide-content:hover p {
-    transform: translateZ(30px);
-}
-
-.l360-slide-btn {
-    display: inline-block;
-    padding: 14px 35px;
-    background: linear-gradient(135deg, #e11d48, #9f1239);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
-}
-
-.l360-slide-btn:hover {
-    background: linear-gradient(135deg, #be123c, #881337);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(225, 29, 72, 0.6);
-}
-
-@media (max-width: 992px) {
     .l360-hero-section {
-        padding: 32px 20px;
-        gap: 25px;
-    }
+        min-height: 560px;
 
-    .l360-hero-left-content p {
-        font-size: 13px;
-    }
+        padding:
+            60px 6%;
 
-    .l360-feature-item span {
-        font-size: 12px;
-    }
+        gap: 40px;
 
-    .l360-hero-right-content {
-        max-width: 100%;
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .l360-hero-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 20px;
-        margin: 20px 15px;
-        border-radius: 20px;
+        background-position:
+            center 50%;
     }
 
     .l360-hero-left-content h1 {
-        font-size: 32px;
-        margin-bottom: 12px;
+        font-size: 42px;
+    }
+
+    .l360-hero-left-content p {
+        font-size: 16px;
+    }
+
+    .l360-hero-right-content {
+        max-width: 520px;
+    }
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .l360-hero-section {
+        min-height: auto;
+
+        padding:
+            50px 30px;
+
+        gap: 30px;
+
+        margin-left: 15px;
+
+        margin-right: 15px;
+
+        background-position:
+            center 50%;
+    }
+
+    .l360-hero-left-content {
+        flex: 1;
+    }
+
+    .l360-hero-left-content h1 {
+        font-size: 36px;
     }
 
     .l360-hero-left-content p {
         font-size: 14px;
-        margin-left: auto;
-        margin-right: auto;
+
+        margin-bottom: 24px;
     }
 
-    .l360-hero-features {
-        justify-content: center;
-        gap: 12px;
+    .l360-hero-right-content {
+        flex: 1;
+
+        max-width: 470px;
     }
 
     .l360-feature-item {
-        justify-content: center;
-        padding: 6px 12px;
+        padding:
+            9px 15px;
+    }
+
+    .l360-feature-item span {
+        font-size: 12px;
     }
 
     .l360-search-container {
-        padding: 5px 5px 5px 20px;
-    }
-
-    .l360-search-container input {
-        padding: 10px 0;
-        font-size: 13px;
+        min-height: 58px;
     }
 
     .l360-search-container button {
-        padding: 6px 22px;
+        padding:
+            12px 22px;
+
         font-size: 12px;
-    }
-
-    .l360-banner {
-        height: 50vh;
-        min-height: 400px;
-    }
-
-    .l360-slide-content h2 {
-        font-size: 1.6rem;
-    }
-
-    .l360-slide-content p {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-
-    .l360-slide-btn {
-        padding: 8px 24px;
-        font-size: 13px;
     }
 }
 
-@media (max-width: 480px) {
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
     .l360-hero-section {
-        padding: 24px 15px;
+
+        width: calc(100% - 24px);
+
+        margin:
+            15px 12px 25px;
+
+        padding:
+            45px 18px 32px;
+
+        min-height: auto;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 25px;
+
+        border-radius: 20px;
+
+        /*
+          Mobile photo remains visible
+        */
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.52),
+                rgba(255, 255, 255, 0.52)
+            ),
+            url('/assets/images/hero-students.jpg');
+
+        background-size: cover;
+
+        background-position:
+            center center;
     }
+
+
+    /* Reduce extra overlay */
+    .l360-hero-section::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.10),
+                rgba(255, 255, 255, 0.04)
+            );
+    }
+
+
+    .l360-hero-left-content {
+        width: 100%;
+
+        max-width: 100%;
+    }
+
 
     .l360-hero-left-content h1 {
-        font-size: 16px;
+        font-size: 28px;
+
+        line-height: 1.25;
+
+        letter-spacing: -0.5px;
+
+        margin-bottom: 12px;
     }
 
+
     .l360-hero-left-content p {
+        max-width: 100%;
+
+        font-size: 13px;
+
+        line-height: 1.55;
+
+        margin:
+            0 auto 22px;
+    }
+
+
+    .l360-hero-features {
+        justify-content: center;
+
+        gap: 11px;
+
+        margin-top: 15px;
+    }
+
+
+    .l360-feature-item {
+        padding:
+            8px 14px;
+
+        gap: 8px;
+    }
+
+
+    .l360-feature-item i {
+        width: 27px;
+
+        height: 27px;
+
+        min-width: 27px;
+
         font-size: 11px;
     }
 
-    .l360-hero-features {
-        gap: 15px;
-    }
-
-    .l360-feature-item i {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-    }
 
     .l360-feature-item span {
         font-size: 11px;
     }
 
-    .l360-search-container {
-        padding: 2px 2px 2px 15px;
+
+    .l360-hero-right-content {
+        width: 100%;
+
+        max-width: 100%;
     }
+
+
+    .l360-search-container {
+        min-height: 52px;
+
+        padding:
+            4px 4px 4px 14px;
+    }
+
+
+    .l360-search-container > i {
+        font-size: 14px;
+
+        margin-right: 8px;
+    }
+
 
     .l360-search-container input {
-        padding: 8px 0;
         font-size: 12px;
+
+        padding:
+            9px 0;
     }
 
+
     .l360-search-container button {
-        padding: 5px 18px;
+        padding:
+            10px 17px;
+
+        font-size: 11px;
+
+        letter-spacing: 0.4px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .l360-hero-section {
+
+        width: calc(100% - 12px);
+
+        margin:
+            10px 6px 20px;
+
+        padding:
+            32px 12px 25px;
+
+        gap: 21px;
+
+        border-radius: 18px;
+
+        /*
+          Keep image clearly visible
+        */
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.56),
+                rgba(255, 255, 255, 0.56)
+            ),
+            url('/assets/images/hero-students.jpg');
+
+        background-size: cover;
+
+        background-position:
+            center center;
+    }
+
+
+    .l360-hero-left-content h1 {
+        font-size: 24px;
+
+        line-height: 1.25;
+
+        margin-bottom: 10px;
+    }
+
+
+    .l360-hero-left-content p {
+        font-size: 12px;
+
+        line-height: 1.5;
+
+        padding:
+            0 5px;
+    }
+
+
+    .l360-hero-features {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 100%;
+
+        gap: 10px;
+    }
+
+
+    .l360-feature-item {
+
+        width: fit-content;
+
+        max-width: 100%;
+
+        padding:
+            7px 14px;
+    }
+
+
+    .l360-feature-item span {
         font-size: 11px;
     }
 
+
+    .l360-search-container {
+        min-height: 48px;
+
+        padding-left: 11px;
+    }
+
+
+    .l360-search-container > i {
+        font-size: 13px;
+
+        margin-right: 6px;
+    }
+
+
+    .l360-search-container input {
+        font-size: 11px;
+    }
+
+
+    .l360-search-container input::placeholder {
+        font-size: 10px;
+    }
+
+
+    .l360-search-container button {
+        padding:
+            8px 14px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .l360-hero-section {
+
+        padding:
+            28px 9px 22px;
+
+        background-position:
+            center center;
+    }
+
+
+    .l360-hero-left-content h1 {
+        font-size: 21px;
+    }
+
+
+    .l360-hero-left-content p {
+        font-size: 11px;
+    }
+
+
+    .l360-feature-item span {
+        font-size: 10px;
+    }
+
+
+    .l360-search-container {
+        padding-left: 9px;
+    }
+
+
+    .l360-search-container button {
+        padding:
+            8px 10px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   BANNER / CAROUSEL
+========================================================= */
+
+.l360-banner {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #1e293b 100%
+        );
+
+    color: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+
+    height: 60vh;
+
+    min-height: 550px;
+}
+
+
+.l360-banner-carousel {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.l360-carousel-slides {
+
+    display: flex;
+
+    width: 300%;
+
+    height: 100%;
+
+    transition:
+        transform 0.6s ease-in-out;
+}
+
+
+.l360-carousel-slide {
+
+    width: 33.333%;
+
+    height: 100%;
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    perspective: 1000px;
+}
+
+
+.l360-carousel-slide::before {
+
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+
+    z-index: 0;
+}
+
+
+.l360-slide-content {
+
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 900px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    transition:
+        all 0.5s
+        cubic-bezier(0.4, 0, 0.2, 1);
+
+    transform-style: preserve-3d;
+}
+
+
+.l360-slide-content:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.02)
+        rotateX(2deg);
+}
+
+
+.l360-slide-content h2 {
+
+    color: #ffffff;
+
+    font-size: 3.2rem;
+
+    line-height: 1.25;
+
+    margin-bottom: 24px;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.6);
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.l360-slide-content p {
+
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 1.25rem;
+
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.6);
+
+    line-height: 1.7;
+
+    max-width: 90%;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    font-weight: 500;
+}
+
+
+.l360-slide-btn {
+
+    display: inline-block;
+
+    padding: 14px 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e11d48,
+            #9f1239
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 8px 20px rgba(225, 29, 72, 0.4);
+
+    transition: all 0.3s ease;
+}
+
+
+.l360-slide-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #be123c,
+            #881337
+        );
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(225, 29, 72, 0.6);
+}
+
+
+/* =========================================================
+   BANNER RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
     .l360-banner {
+
+        height: 50vh;
+
+        min-height: 400px;
+    }
+
+
+    .l360-slide-content h2 {
+
+        font-size: 1.6rem;
+    }
+
+
+    .l360-slide-content p {
+
+        font-size: 0.9rem;
+
+        margin-bottom: 20px;
+    }
+
+
+    .l360-slide-btn {
+
+        padding:
+            8px 24px;
+
+        font-size: 13px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .l360-banner {
+
         height: 45vh;
+
         min-height: 350px;
     }
 
+
     .l360-slide-content h2 {
+
         font-size: 1.3rem;
     }
 
+
     .l360-slide-content p {
+
         font-size: 0.8rem;
     }
 
+
     .l360-slide-btn {
-        padding: 6px 20px;
+
+        padding:
+            6px 20px;
+
         font-size: 12px;
     }
 }

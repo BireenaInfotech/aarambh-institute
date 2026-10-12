@@ -36,16 +36,16 @@ const Footer = () => {
             Stay updated with the latest education news and admission alerts.
           </p>
           <div className="l360-social-icons">
-            <a href="https://www.instagram.com/aarambh.institutepatna/" target="_blank" rel="noreferrer" className="social-ig" title="Instagram">
+            <a href="https://www.instagram.com/aarambh_institute_patna" target="_blank" rel="noreferrer" className="social-ig" title="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
             <a href="https://www.facebook.com/share/1B9zGQGH1H/" target="_blank" rel="noreferrer" className="social-fb" title="Facebook">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className="social-li" title="LinkedIn">
+            <a href="https://www.linkedin.com/company/aarambh-institute-patna/" target="_blank" rel="noreferrer" className="social-li" title="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className="social-tw" title="Twitter/X">
+            <a href="https://x.com/openadmission99" target="_blank" rel="noreferrer" className="social-tw" title="Twitter/X">
               <i className="fab fa-x-twitter"></i>
             </a>
             <a href="https://wa.me/9931003857" target="_blank" rel="noreferrer" className="social-wa" title="WhatsApp">

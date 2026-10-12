@@ -85,9 +85,9 @@ const ContactUs = () => {
                 <div>
                   <h3 className="text-[15px] font-bold text-gray-900 mb-1">Phone Number</h3>
                   <div className="space-y-1">
-                    <a href="tel:9931003857" className="block text-[13px] font-medium text-gray-600 hover:text-[#c40138] transition-colors">+91 9931003857 <span className="text-gray-400 text-xs ml-1">(Komal Ma'am)</span></a>
+                    <a href="tel:9931003857" className="block text-[13px] font-medium text-gray-600 hover:text-[#c40138] transition-colors">+91 9931003857 <span className="text-gray-400 text-xs ml-1">(Guriya Ma'am)</span></a>
                     <a href="tel:9931006379" className="block text-[13px] font-medium text-gray-600 hover:text-[#c40138] transition-colors">+91 9931006379 <span className="text-gray-400 text-xs ml-1">(Nutan Ma'am)</span></a>
-                    <a href="tel:9931600795" className="block text-[13px] font-medium text-gray-600 hover:text-[#c40138] transition-colors">+91 9931600795 <span className="text-gray-400 text-xs ml-1">(Muskan Ma'am)</span></a>
+                    <a href="tel:9931600795" className="block text-[13px] font-medium text-gray-600 hover:text-[#c40138] transition-colors">+91 9931060290 <span className="text-gray-400 text-xs ml-1">(Harpreet Ma'am)</span></a>
                   </div>
                 </div>
               </div>
