@@ -9,22 +9,28 @@ const protect = async (req, res, next) => {
   }
   
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const jwtSecret = process.env.JWT_SECRET || 'super_secret_key';
+    const decoded = jwt.verify(token, jwtSecret);
     
     // Check Single Device Login (Session Token match)
-    const [users] = await db.query('SELECT session_token FROM users WHERE id = ?', [decoded.id]);
-    if (users.length === 0) {
-      return res.status(401).json({ error: 'User no longer exists.' });
-    }
-    
-    // If the token in DB is different from the token in JWT, they logged in elsewhere
-    if (users[0].session_token && users[0].session_token !== decoded.session_token) {
-      return res.status(401).json({ error: 'Session expired. You logged in from another device.' });
+    try {
+      const [users] = await db.query('SELECT session_token FROM users WHERE id = ?', [decoded.id]);
+      if (users.length === 0) {
+        return res.status(401).json({ error: 'User no longer exists.' });
+      }
+      
+      // If the token in DB is different from the token in JWT, they logged in elsewhere
+      if (decoded.session_token && users[0].session_token && users[0].session_token !== decoded.session_token) {
+        return res.status(401).json({ error: 'Session expired. You logged in from another device.' });
+      }
+    } catch (dbErr) {
+      console.warn('Session verification warning:', dbErr.message);
     }
 
     req.user = decoded; // Attach user info to request
     next();
   } catch (ex) {
+    console.error('Auth token verification error:', ex.message);
     res.status(401).json({ error: 'Invalid token.' });
   }
 };

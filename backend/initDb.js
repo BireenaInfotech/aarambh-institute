@@ -8,7 +8,7 @@ async function initializeDatabase() {
     // Connect to MySQL server
     connection = await mysql.createConnection({
       host: process.env.DB_HOST || 'localhost',
-      port: Number(process.env.DB_PORT) || 3307,
+      port: Number(process.env.DB_PORT) || 3306,
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || ''
     });
@@ -40,12 +40,26 @@ async function initializeDatabase() {
         board VARCHAR(50) NOT NULL,
         class VARCHAR(50) NOT NULL,
         password VARCHAR(255) NOT NULL,
+        role VARCHAR(20) DEFAULT 'student',
+        session_token VARCHAR(255) DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
 
     await connection.query(createUsersTable);
     console.log('Users table created or already exists.');
+
+    // Ensure role and session_token columns exist if table was previously created
+    try {
+      await connection.query(`ALTER TABLE users ADD COLUMN role VARCHAR(20) DEFAULT 'student'`);
+    } catch (e) {
+      if (e.code !== 'ER_DUP_FIELDNAME') console.warn('Note on role column:', e.message);
+    }
+    try {
+      await connection.query(`ALTER TABLE users ADD COLUMN session_token VARCHAR(255) DEFAULT NULL`);
+    } catch (e) {
+      if (e.code !== 'ER_DUP_FIELDNAME') console.warn('Note on session_token column:', e.message);
+    }
 
     // ==========================================
     // OTPs TABLE

@@ -62,7 +62,12 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      const data = await response.json();
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (parseErr) {
+        data = { success: false, message: 'Unexpected server response.' };
+      }
 
       if (response.ok && data.success) {
         // Save token to localStorage or context
@@ -72,7 +77,7 @@ const Login = () => {
         if (data.role === 'admin') {
           redirectPath = '/admin-dashboard';
         } else if (data.role === 'teacher') {
-          redirectPath = '/teacher-dashboard';
+          redirectPath = '/teacher';
         }
         
         setMessage({ text: 'Login successful! Redirecting...', type: 'success' });

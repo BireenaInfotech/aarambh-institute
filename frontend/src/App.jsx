@@ -173,6 +173,10 @@ function App() {
           <Route path="notifications" element={<TeacherNotifications />} />
         </Route>
 
+        <Route path="/teacher-dashboard" element={<TeacherLayout />}>
+           <Route path="" element={<TeacherDashboard />} />
+        </Route>
+
       </Routes>
     </Router>
   );

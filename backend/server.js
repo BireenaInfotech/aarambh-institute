@@ -34,6 +34,18 @@ app.use('/api', apiRoutes);
 
 const PORT = process.env.PORT || 5000;
 
+// Test DB pool connection on startup
+const db = require('./config/db');
+db.getConnection()
+  .then((conn) => {
+    console.log('Database connected successfully.');
+    conn.release();
+  })
+  .catch((err) => {
+    console.warn(`Database connection warning (${err.code || 'ERR'}): ${err.message}`);
+    console.warn('Verify database credentials in backend/.env');
+  });
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

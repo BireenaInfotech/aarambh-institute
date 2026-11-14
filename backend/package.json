@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "init-db": "node initDb.js",
+    "fix-db": "node fixDb.js",
+    "seed": "node seedAdmin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

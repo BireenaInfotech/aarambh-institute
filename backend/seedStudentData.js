@@ -1,12 +1,14 @@
 const mysql = require('mysql2/promise');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 async function seedData() {
   try {
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST || 'localhost',
+      port: Number(process.env.DB_PORT) || 3306,
       user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || 'Ravi@12345',
+      password: process.env.DB_PASSWORD || '',
       database: process.env.DB_NAME || 'aarambh_db'
     });
 
@@ -14,13 +16,17 @@ async function seedData() {
 
     // 1. Seed User (Student)
     // First, check if a user with ID 1 exists. If not, insert one.
+    const hashedPassword = await bcrypt.hash('student123', 10);
     const [users] = await connection.execute('SELECT * FROM users WHERE id = 1');
     if (users.length === 0) {
       await connection.execute(`
-        INSERT INTO users (id, full_name, mobile, email, board, class, password) 
-        VALUES (1, 'Rahul Sharma', '9876543210', 'rahul@example.com', 'CBSE', '12th Science', 'hashedpassword')
-      `);
-      console.log('Inserted mock user (student).');
+        INSERT INTO users (id, full_name, mobile, email, board, class, password, role) 
+        VALUES (1, 'Rahul Sharma', '9876543210', 'rahul@example.com', 'CBSE', '12th Science', ?, 'student')
+      `, [hashedPassword]);
+      console.log('Inserted mock user (student: rahul@example.com / student123).');
+    } else {
+      await connection.execute('UPDATE users SET password = ?, role = "student" WHERE id = 1', [hashedPassword]);
+      console.log('Updated mock user password (student: rahul@example.com / student123).');
     }
 
     const studentId = 1;

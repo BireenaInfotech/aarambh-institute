@@ -168,8 +168,21 @@ exports.login = async (req, res) => {
     // Generate a unique session token for Single Device Login
     const sessionToken = crypto.randomBytes(32).toString('hex');
 
-    // Update the user's session_token in the database
-    await db.query('UPDATE users SET session_token = ? WHERE id = ?', [sessionToken, user.id]);
+    // Update the user's session_token in the database (with auto-recovery if column missing)
+    try {
+      await db.query('UPDATE users SET session_token = ? WHERE id = ?', [sessionToken, user.id]);
+    } catch (sessionErr) {
+      if (sessionErr.code === 'ER_BAD_FIELD_ERROR') {
+        try {
+          await db.query('ALTER TABLE users ADD COLUMN session_token VARCHAR(255) DEFAULT NULL');
+          await db.query('UPDATE users SET session_token = ? WHERE id = ?', [sessionToken, user.id]);
+        } catch (addColErr) {
+          console.warn('Could not auto-create session_token column:', addColErr.message);
+        }
+      } else {
+        console.warn('Warning updating session token:', sessionErr.message);
+      }
+    }
 
     // Generate JWT token including the session_token
     const token = jwt.sign(
