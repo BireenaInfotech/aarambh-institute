@@ -15,21 +15,21 @@ async function seedData() {
     console.log('Connected to MySQL server for seeding.');
 
     // 1. Seed User (Student)
-    // First, check if a user with ID 1 exists. If not, insert one.
     const hashedPassword = await bcrypt.hash('student123', 10);
-    const [users] = await connection.execute('SELECT * FROM users WHERE id = 1');
+    const [users] = await connection.execute('SELECT id FROM users WHERE email = ?', ['rahul@example.com']);
+    let studentId;
     if (users.length === 0) {
-      await connection.execute(`
-        INSERT INTO users (id, full_name, mobile, email, board, class, password, role) 
-        VALUES (1, 'Rahul Sharma', '9876543210', 'rahul@example.com', 'CBSE', '12th Science', ?, 'student')
+      const [insertResult] = await connection.execute(`
+        INSERT INTO users (full_name, mobile, email, board, class, password, role) 
+        VALUES ('Rahul Sharma', '9876543210', 'rahul@example.com', 'CBSE', '12th Science', ?, 'student')
       `, [hashedPassword]);
-      console.log('Inserted mock user (student: rahul@example.com / student123).');
+      studentId = insertResult.insertId;
+      console.log(`Inserted mock user (student: rahul@example.com / student123, id: ${studentId}).`);
     } else {
-      await connection.execute('UPDATE users SET password = ?, role = "student" WHERE id = 1', [hashedPassword]);
-      console.log('Updated mock user password (student: rahul@example.com / student123).');
+      studentId = users[0].id;
+      await connection.execute('UPDATE users SET password = ?, role = "student" WHERE id = ?', [hashedPassword, studentId]);
+      console.log(`Updated mock user password (student: rahul@example.com / student123, id: ${studentId}).`);
     }
-
-    const studentId = 1;
 
     // 2. Seed Attendance
     await connection.execute('DELETE FROM attendance WHERE student_id = ?', [studentId]);
