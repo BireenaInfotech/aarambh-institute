@@ -200,7 +200,13 @@ exports.login = async (req, res) => {
     res.json({ success: true, token, role: user.role || 'student', message: 'Login successful' });
   } catch (error) {
     console.error('Error in login:', error);
-    res.status(500).json({ success: false, message: 'Login failed' });
+    if (error.code === 'ER_ACCESS_DENIED_ERROR' || error.code === 'ECONNREFUSED') {
+      return res.status(500).json({
+        success: false,
+        message: 'Database connection failed. Please verify MySQL credentials in backend/.env'
+      });
+    }
+    res.status(500).json({ success: false, message: error.message || 'Login failed' });
   }
 };
 

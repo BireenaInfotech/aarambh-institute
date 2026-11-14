@@ -66,6 +66,13 @@ const Login = () => {
       try {
         data = await response.json();
       } catch (parseErr) {
+        if (!response.ok) {
+          setMessage({
+            text: 'Backend server is not reachable on port 5000. Please ensure the backend is running.',
+            type: 'error'
+          });
+          return;
+        }
         data = { success: false, message: 'Unexpected server response.' };
       }
 
