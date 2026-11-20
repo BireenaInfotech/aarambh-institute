@@ -1,5 +1,7 @@
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 require('dotenv').config();
 
 async function seedData() {
@@ -83,7 +85,7 @@ async function seedData() {
     console.log('Seeded Notifications.');
 
     // 6. Seed Tickets
-    await connection.execute('DELETE FROM tickets WHERE student_id = ?', [studentId]);
+    await connection.execute('DELETE FROM tickets WHERE student_id = ? OR ticket_id IN ("#TKT-1024", "#TKT-1025")', [studentId]);
     const tickets = [
       ['#TKT-1024', studentId, 'Technical Issue', 'App crashes on iOS 16', 'App keeps crashing when I open the recorded lectures section.', 'Open'],
       ['#TKT-1025', studentId, 'Study Material', 'Missing Chapter 4 PDF', 'The PDF for Chemistry Chapter 4 is not available in the portal.', 'Resolved']
